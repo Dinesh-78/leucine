@@ -18,7 +18,7 @@ import AdminDashboard from './AdminDashboard.jsx';
 function App() {
   return (
       <>
-          {/* This is the alias of BrowserRouter i.e. Router */}
+         
           <Router>
               <Routes>
                  

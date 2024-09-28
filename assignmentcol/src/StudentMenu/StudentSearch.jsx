@@ -8,7 +8,7 @@ function StudentSearch() {
   const handleSearch = async (e) => {
     e.preventDefault();
 
-    // Simulate searching students from backend
+   
     const response = await fetch(`/api/student/search?query=${query}&filter=${filter}`);
     const data = await response.json();
     setResults(data);

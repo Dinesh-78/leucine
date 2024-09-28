@@ -6,10 +6,10 @@ function ManageClassList() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Simulate fetching class list from the backend
+    
     const fetchClassList = async () => {
       try {
-        const response = await fetch('/api/faculty/class-list'); // Replace with your actual API endpoint
+        const response = await fetch('/api/faculty/class-list'); 
         const data = await response.json();
         setStudents(data);
       } catch (err) {

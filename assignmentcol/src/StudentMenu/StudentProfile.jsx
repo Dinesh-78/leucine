@@ -6,10 +6,10 @@ function StudentProfile() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Simulate fetching student data from the backend
+    
     const fetchProfile = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/auth'); // Replace with your actual API call
+        const response = await fetch('http://localhost:8080/api/auth'); 
         const data = await response.json();
         setProfile(data[0]);
         console.log(data[0]);

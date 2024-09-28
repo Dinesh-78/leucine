@@ -11,10 +11,10 @@ function UpdateProfile() {
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    // Simulate fetching current profile details from the backend
+   
     const fetchProfile = async () => {
       try {
-        const response = await fetch('/api/faculty/profile'); // Replace with your actual API
+        const response = await fetch('/api/faculty/profile'); 
         const data = await response.json();
         setProfile(data);
       } catch (err) {
@@ -32,7 +32,7 @@ function UpdateProfile() {
     setSuccess(false);
     setError(null);
 
-    // Validate input (basic validation)
+   
     if (!profile.officeHours || !profile.email || !profile.phone) {
       setError("All fields are required.");
       return;

@@ -5,15 +5,15 @@ import { useNavigate } from 'react-router-dom';
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('Student'); // Default role
+  const [role, setRole] = useState('Student'); 
   const [error, setError] = useState(null);
 
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate(); 
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Simple validation
+    
     if (!username || !password) {
       setError("Please enter both username and password.");
       return;
@@ -33,7 +33,7 @@ function Login() {
       if (response.ok) {
         if (role === 'Student') {
           console.log("student entering");
-          navigate('/student'); // Use navigate function
+          navigate('/student'); 
         } else if (role === 'Faculty Member') {
           navigate('/faculty');
         } else if (role === 'Administrator') {

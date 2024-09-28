@@ -10,23 +10,23 @@ function ManageRecord() {
     role: '',
     username: ''
   });
-  const [action, setAction] = useState(null); // Track the current action: add, update, delete
-  const [records, setRecords] = useState([]); // Store records for list view
+  const [action, setAction] = useState(null); 
+  const [records, setRecords] = useState([]); 
   const [editing, setEditing] = useState(false);
 
 
   useEffect(() => {
-    // Fetch initial data for the records from API
+   
     fetchRecords();
   }, []);
 
-  // Function to fetch records from API
+  
   const fetchRecords = async () => {
     try {
       const response = await fetch('http://localhost:8080/api/admin/records');
       if (response.ok) {
         const data = await response.json();
-        setRecords(data); // Assuming the API returns an array of records
+        setRecords(data); 
       } else {
         console.error('Failed to fetch records:', response.status);
       }
@@ -35,7 +35,7 @@ function ManageRecord() {
     }
   };
 
-  // Handle input change
+ 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({
@@ -44,7 +44,7 @@ function ManageRecord() {
     });
   };
 
-  // Function to handle the POST request to add data to the API
+ 
   const addRecord = async () => {
     try {
       const response = await fetch('http://localhost:8080/api/admin/records', {
@@ -59,7 +59,7 @@ function ManageRecord() {
           name: form.name,
           email: form.email,
           phone: form.phone,
-          role: form.role.toUpperCase(), // Ensure role is in uppercase
+          role: form.role.toUpperCase(), 
           studentProfile: null,
           facultyProfile: null,
           administratorProfile: null,
@@ -77,14 +77,14 @@ function ManageRecord() {
     }
   };
 
-  // Function to handle the DELETE request to remove a record from the API
+  
   const deleteRecord = async (id) => {
     try {
       const response = await fetch(`http://localhost:8080/api/admin/records/${id}`, {
         method: 'DELETE',
       });
       if (response.ok) {
-        // If deletion was successful, update local state
+       
         setRecords(records.filter((record) => record.id !== id));
         console.log('Record deleted successfully');
       } else {
@@ -95,47 +95,47 @@ function ManageRecord() {
     }
   };
 
-  // Handle form submission
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     if (action === 'add') {
       console.log('Adding record', form);
-      addRecord(); // Call the addRecord function to send data to the API
+      addRecord(); 
     } else if (action === 'update') {
       console.log('Updating record', form);
-      // Implement update logic here (e.g., PUT request to API)
+      
       const updatedRecords = records.map((rec) => (rec.id === form.id ? form : rec));
       setRecords(updatedRecords);
     } else if (action === 'delete') {
       console.log('Deleting record with ID:', form.id);
-      deleteRecord(form.id); // Call deleteRecord function with the ID
+      deleteRecord(form.id); 
     }
 
-    // Reset form and action
+    
     setForm({ id: '', name: '', email: '', password: '', phone: '', role: '', username: '' });
     setAction(null);
     setEditing(false);
   };
 
-  // Handle editing a record
+  
   const handleEdit = (record) => {
     setForm(record);
     setEditing(true);
     setAction('update');
   };
 
-  // Handle deleting a record
+  
   const handleDelete = (id) => {
     setForm({ id });
     setAction('delete');
-    handleSubmit(new Event('submit')); // Simulate form submission
+    handleSubmit(new Event('submit')); 
   };
 
   return (
     <div>
       <h2>Manage Record</h2>
 
-      {/* Record List View */}
+     
       <h3>Existing Records</h3>
       <ul>
         {records.map((record) => (
@@ -147,7 +147,7 @@ function ManageRecord() {
         ))}
       </ul>
 
-      {/* Form for CRUD operations */}
+      
       <form onSubmit={handleSubmit}>
         <div>
           <label>ID:</label>
@@ -232,7 +232,7 @@ function ManageRecord() {
           />
         </div>
 
-        {/* Buttons for different operations */}
+        
         <div className="buttons">
           <button type="button" onClick={() => setAction('add')}>
             Add
@@ -244,7 +244,7 @@ function ManageRecord() {
           )}
         </div>
 
-        {/* Submit button */}
+        
         <div>
           <button type="submit">
             {action ? `${action.charAt(0).toUpperCase() + action.slice(1)} Record` : 'Submit'}

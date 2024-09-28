@@ -6,10 +6,10 @@ function ContactAdvisors() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Simulate fetching faculty advisor data from the backend
+    
     const fetchAdvisors = async () => {
       try {
-        const response = await fetch('/api/student/advisors'); // Replace with your actual API endpoint
+        const response = await fetch('/api/student/advisors'); 
         const data = await response.json();
         setAdvisors(data);
       } catch (err) {

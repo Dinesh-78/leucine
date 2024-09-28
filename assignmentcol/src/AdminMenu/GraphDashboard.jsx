@@ -8,10 +8,10 @@ function GraphDashboard() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Simulate fetching enrollment trends and faculty course load data from the backend
+    
     const fetchDashboardData = async () => {
       try {
-        const enrollmentResponse = await fetch('/api/admin/enrollment-trends'); // Replace with actual API
+        const enrollmentResponse = await fetch('/api/admin/enrollment-trends'); 
         const facultyLoadResponse = await fetch('/api/admin/faculty-load');
         const enrollmentData = await enrollmentResponse.json();
         const facultyLoadData = await facultyLoadResponse.json();
